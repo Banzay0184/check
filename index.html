@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Моя страница</title>
+    <style>
+        html, body {
+            width: 595px;
+            height: 842px;
+            margin: 0 auto;
+            padding: 0;
+            font-family: Inter, sans-serif;
+            position: relative;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+
+        .hidden-section {
+            display: none;
+        }
+
+        .header-top {
+            background: rgba(0, 0, 0, 0.08);
+            display: flex;
+            padding: 32px 40px 16px 40px;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .header-top h1 {
+
+            max-width: 150px;
+            font-size: 32px;
+            font-weight: 500;
+        }
+
+        .header-top img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .header-bottom {
+            display: flex;
+            padding: 9px 40px;
+            justify-content: space-between;
+        }
+
+        .header-bottom h1 {
+            color: white;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .main-top {
+            padding: 32px 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card {
+            width: 100%;
+        }
+
+        .card h1 {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 8px;
+            margin-bottom: 4px;
+        }
+
+        .card p {
+            font-size: 10px;
+            font-weight: 400;
+            padding: 0 8px;
+            margin-bottom: 2px;
+        }
+
+        .main {
+            position: relative;
+        }
+
+        .main-table {
+            position: relative;
+            width: 100%;
+            padding: 0 40px 0 40px;
+            border-spacing: 0 6px;
+        }
+
+        .main-table::after {
+            content: '';
+            width: 515px;
+            height: 1px;
+            position: absolute;
+            bottom: 0;
+            background: black;
+        }
+
+        .main-table th {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 8px;
+            text-align: start;
+        }
+
+
+        .main-table td {
+            font-size: 10px;
+            font-weight: 400;
+            padding: 0 8px;
+            vertical-align: text-top;
+            word-wrap: break-word;
+        }
+
+        .main-table td h1 {
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+
+        .main-table td span {
+            width: 115px;
+            max-width: 100%;
+            margin-top: 4px;
+            display: inline-block;
+            font-size: 8px;
+            font-weight: 400;
+
+        }
+
+
+        .main-Check {
+            position: absolute;
+            margin: 12px 40px 0 40px;
+            right: 0;
+            width: 221px;
+            height: 113px;
+        }
+
+        .mainCheckTop {
+            padding: 0 8px 0 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .list {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .list h1 {
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        .total {
+            display: flex;
+            padding: 8px;
+            justify-content: space-between;
+            align-items: flex-start;
+            align-self: stretch;
+        }
+
+        .total h1 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .footerBoxL {
+            width: 100%;
+        }
+
+        .footerBoxR {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .footerBox {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            align-items: flex-start;
+        }
+
+        .footerBox h1 {
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        .footerBox p {
+            font-size: 10px;
+            font-weight: 400;
+            text-align: start;
+        }
+
+        .footer {
+            display: flex;
+            gap: 16px;
+            text-align: center;
+            padding: 0px 40px 0px 40px;
+            position: absolute;
+            bottom: 0;
+            margin-bottom: 32px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="header">
+
+</div>
+
+<div class="main">
+
+</div>
+
+<div class="footer">
+
+</div>
+
+<script>
+    function fillDocument(data) {
+        data.sections.forEach(function (section) {
+            var sectionHeaderTop = document.createElement('div');
+            sectionHeaderTop.className = 'header-top';
+
+            if (section.color) {
+                sectionHeaderTop.style.background = section.color;
+            }
+
+            if (section.title.hidden) {
+                var titleHeader = document.createElement('h1');
+                titleHeader.textContent = section.title.label + ' ' + section.title.numberI;
+                sectionHeaderTop.appendChild(titleHeader);
+            }
+
+            if (section.logo.hidden) {
+                var labelElement = document.createElement('img');
+                labelElement.src = section.logo.value;
+                sectionHeaderTop.appendChild(labelElement);
+            }
+
+            document.querySelector('.header').appendChild(sectionHeaderTop);
+
+            var sectionHeaderBottom = document.createElement('div');
+            sectionHeaderBottom.className = 'header-bottom';
+
+            if (section.colorLine) {
+                sectionHeaderBottom.style.background = section.colorLine;
+            }
+
+
+            if (section.date.hidden) {
+                var dateHeaderBottom = document.createElement('h1');
+                dateHeaderBottom.textContent = section.date.label + ': ' + section.date.value;
+                sectionHeaderBottom.appendChild(dateHeaderBottom);
+            }
+
+            if (section.dueDate.hidden) {
+                var dueDateHeaderBottom = document.createElement('h1');
+                dueDateHeaderBottom.textContent = section.dueDate.label + ': ' + section.dueDate.value;
+                sectionHeaderBottom.appendChild(dueDateHeaderBottom);
+            }
+
+            if (section.reference.hidden) {
+                var referenceHeaderBottom = document.createElement('h1');
+                referenceHeaderBottom.textContent = section.reference.label + ': ' + section.reference.value;
+                sectionHeaderBottom.appendChild(referenceHeaderBottom);
+            }
+
+            document.querySelector('.header').appendChild(sectionHeaderBottom);
+
+            // sectionMain
+            let sectionMainTop = document.createElement('div');
+            sectionMainTop.className = 'main-top';
+
+
+            if (section.fromCard.hidden) {
+                let Card = document.createElement('div');
+                Card.className = 'card'
+
+                let labelCard = document.createElement('h1');
+                labelCard.textContent = section.fromCard.label
+                labelCard.style.background = section.fromCard.color
+
+                let companyCard = document.createElement('p');
+                companyCard.textContent = section.fromCard.company
+
+                let nameCard = document.createElement('p');
+                nameCard.textContent = section.fromCard.name
+
+                let emailCard = document.createElement('p');
+                emailCard.textContent = section.fromCard.email
+
+                let phoneCard = document.createElement('p');
+                phoneCard.textContent = section.fromCard.phone
+
+                let streetCard = document.createElement('p');
+                streetCard.textContent = section.fromCard.street
+
+                let locCard = document.createElement('p');
+                locCard.textContent = section.fromCard.city + ', ' + section.fromCard.region + ', ' + section.fromCard.country
+
+                Card.appendChild(labelCard)
+                Card.appendChild(companyCard)
+                Card.appendChild(nameCard)
+                Card.appendChild(emailCard)
+                Card.appendChild(phoneCard)
+                Card.appendChild(streetCard)
+                Card.appendChild(locCard)
+                sectionMainTop.appendChild(Card);
+            }
+
+
+            if (section.billTo.hidden) {
+                let Card = document.createElement('div');
+                Card.className = 'card'
+
+                let labelCard = document.createElement('h1');
+                labelCard.textContent = section.billTo.label
+                labelCard.style.background = section.billTo.color
+
+                let companyCard = document.createElement('p');
+                companyCard.textContent = section.billTo.company
+
+                let nameCard = document.createElement('p');
+                nameCard.textContent = section.billTo.name
+
+                let emailCard = document.createElement('p');
+                emailCard.textContent = section.billTo.email
+
+                let phoneCard = document.createElement('p');
+                phoneCard.textContent = section.billTo.phone
+
+                let streetCard = document.createElement('p');
+                streetCard.textContent = section.billTo.street
+
+                let locCard = document.createElement('p');
+                locCard.textContent = section.billTo.city + ', ' + section.billTo.region + ', ' + section.billTo.country
+
+                Card.appendChild(labelCard)
+                Card.appendChild(companyCard)
+                Card.appendChild(nameCard)
+                Card.appendChild(emailCard)
+                Card.appendChild(phoneCard)
+                Card.appendChild(streetCard)
+                Card.appendChild(locCard)
+                sectionMainTop.appendChild(Card);
+            }
+
+            if (section.shipping.hidden) {
+                let Card = document.createElement('div');
+                Card.className = 'card'
+
+                let labelCard = document.createElement('h1');
+                labelCard.textContent = section.shipping.label
+                labelCard.style.background = section.shipping.color
+
+                let companyCard = document.createElement('p');
+                companyCard.textContent = section.shipping.company
+
+                let nameCard = document.createElement('p');
+                nameCard.textContent = section.shipping.name
+
+                let emailCard = document.createElement('p');
+                emailCard.textContent = section.shipping.email
+
+                let phoneCard = document.createElement('p');
+                phoneCard.textContent = section.shipping.phone
+
+                let streetCard = document.createElement('p');
+                streetCard.textContent = section.shipping.street
+
+                let locCard = document.createElement('p');
+                locCard.textContent = section.shipping.city + ', ' + section.shipping.region + ', ' + section.shipping.country
+
+                Card.appendChild(labelCard)
+                Card.appendChild(companyCard)
+                Card.appendChild(nameCard)
+                Card.appendChild(emailCard)
+                Card.appendChild(phoneCard)
+                Card.appendChild(streetCard)
+                Card.appendChild(locCard)
+                sectionMainTop.appendChild(Card);
+            }
+
+            document.querySelector('.main').appendChild(sectionMainTop);
+
+            // sectionMainList
+            let sectionMainTable = document.createElement('table');
+            sectionMainTable.className = 'main-table';
+
+            let tableHeader = document.createElement('tr')
+            tableHeader.className = 'tableBody'
+            sectionMainTable.appendChild(tableHeader)
+
+
+            if (section.product.configuration.code.hidden) {
+                let th = document.createElement('th')
+                th.textContent = section.product.configuration.code.label
+                th.style.background = section.color
+                tableHeader.appendChild(th)
+            }
+
+
+            if (section.product.configuration.description.hidden) {
+                let th = document.createElement('th')
+                th.textContent = section.product.configuration.description.label
+                th.style.background = section.color
+                tableHeader.appendChild(th)
+            }
+
+            if (section.product.configuration.Qty.hidden) {
+                let th = document.createElement('th')
+                th.textContent = section.product.configuration.Qty.label
+                th.style.background = section.color
+                tableHeader.appendChild(th)
+            }
+
+
+            if (section.product.configuration.price.hidden) {
+                let th = document.createElement('th')
+                th.textContent = section.product.configuration.price.label
+                th.style.background = section.color
+                tableHeader.appendChild(th)
+            }
+
+            if (section.product.configuration.tax.hidden) {
+                let th = document.createElement('th')
+                th.textContent = section.product.configuration.tax.label
+                th.style.background = section.color
+                tableHeader.appendChild(th)
+            }
+
+
+            if (section.product.configuration.discount.hidden) {
+                let th = document.createElement('th')
+                th.textContent = section.product.configuration.discount.label
+                th.style.background = section.color
+                tableHeader.appendChild(th)
+            }
+
+
+            if (section.product.configuration.amount.hidden) {
+                let th = document.createElement('th')
+                th.textContent = section.product.configuration.amount.label
+                th.style.background = section.color
+                tableHeader.appendChild(th)
+            }
+
+
+            section.product.items.map(item => {
+                let tableBody = document.createElement('tr')
+                sectionMainTable.appendChild(tableBody)
+
+                if (section.product.configuration.code.hidden) {
+                    let code = document.createElement('td')
+                    code.textContent = item.code
+                    tableBody.appendChild(code)
+                }
+
+
+                if (section.product.configuration.description.hidden) {
+                    let description = document.createElement('td')
+                    let descriptionText = document.createElement('h1')
+                    descriptionText.textContent = item.description
+                    description.appendChild(descriptionText)
+                    tableBody.appendChild(description)
+
+                    if (item.descriptionInfo) {
+                        let descriptionInfo = document.createElement('span')
+                        descriptionInfo.textContent = item.descriptionInfo
+                        description.appendChild(descriptionInfo)
+                    }
+                }
+
+                if (section.product.configuration.Qty.hidden) {
+                    let Qty = document.createElement('td')
+                    Qty.textContent = item.Qty
+                    tableBody.appendChild(Qty)
+                }
+
+
+                if (section.product.configuration.price.hidden) {
+                    let price = document.createElement('td')
+                    price.textContent = item.price
+                    tableBody.appendChild(price)
+                }
+
+                if (section.product.configuration.tax.hidden) {
+                    let tax = document.createElement('td')
+                    tax.textContent = item.tax
+                    tableBody.appendChild(tax)
+                }
+
+                if (section.product.configuration.discount.hidden) {
+                    let discount = document.createElement('td')
+                    discount.textContent = item.discount
+                    tableBody.appendChild(discount)
+                }
+
+                if (section.product.configuration.amount.hidden) {
+                    let amount = document.createElement('td')
+                    amount.textContent = item.amount
+                    tableBody.appendChild(amount)
+                }
+
+            })
+
+            document.querySelector('.main').appendChild(sectionMainTable);
+
+            // sectionMainCheck
+            let sectionMainCheck = document.createElement('div');
+            sectionMainCheck.className = 'main-Check';
+
+            let mainCheckTop = document.createElement('div')
+            mainCheckTop.className = 'mainCheckTop'
+            sectionMainCheck.appendChild(mainCheckTop)
+
+            if (section.shippingCost.hidden) {
+                let list = document.createElement('div')
+                list.className = 'list'
+                mainCheckTop.appendChild(list)
+
+                let label = document.createElement('h1')
+                label.textContent = section.shippingCost.label
+                list.appendChild(label)
+
+                let value = document.createElement('h1')
+                value.textContent = section.shippingCost.value
+                list.appendChild(value)
+            }
+
+            if (section.discount.hidden) {
+                let list = document.createElement('div')
+                list.className = 'list'
+                mainCheckTop.appendChild(list)
+
+                let label = document.createElement('h1')
+                label.textContent = section.discount.label
+                list.appendChild(label)
+
+                let value = document.createElement('h1')
+                value.textContent = section.discount.value
+                list.appendChild(value)
+            }
+
+            if (section.SalesTax.hidden) {
+                let list = document.createElement('div')
+                list.className = 'list'
+                mainCheckTop.appendChild(list)
+
+                let label = document.createElement('h1')
+                label.textContent = section.SalesTax.label
+                list.appendChild(label)
+
+                let value = document.createElement('h1')
+                value.textContent = section.SalesTax.value
+                list.appendChild(value)
+            }
+
+            if (section.California.hidden) {
+                let list = document.createElement('div')
+                list.className = 'list'
+                mainCheckTop.appendChild(list)
+
+                let label = document.createElement('h1')
+                label.textContent = section.California.label
+                list.appendChild(label)
+
+                let value = document.createElement('h1')
+                value.textContent = section.California.value
+                list.appendChild(value)
+            }
+
+
+            if (section.totalAmount.hidden) {
+                let total = document.createElement('div')
+                total.className = 'total'
+                total.style.background = section.color
+                sectionMainCheck.appendChild(total)
+
+                let label = document.createElement('h1')
+                label.textContent = section.totalAmount.label
+                total.appendChild(label)
+
+                let value = document.createElement('h1')
+                value.textContent = section.totalAmount.value
+                total.appendChild(value)
+            }
+
+            document.querySelector('.main').appendChild(sectionMainCheck);
+
+            let footerBoxL = document.createElement('div');
+            footerBoxL.className = 'footerBoxL';
+
+            let footerBoxR = document.createElement('div');
+            footerBoxR.className = 'footerBoxR';
+
+            if (section.payment.hidden) {
+                let footerBox = document.createElement('div')
+                footerBox.className = 'footerBox'
+                footerBoxL.appendChild(footerBox)
+
+                let label = document.createElement('h1')
+                label.textContent = section.payment.label
+                footerBox.appendChild(label)
+
+                let value = document.createElement('p')
+                value.textContent = section.payment.value
+                footerBox.appendChild(value)
+            }
+
+            if (section.comments.hidden) {
+                let footerBox = document.createElement('div')
+                footerBox.className = 'footerBox'
+                footerBoxR.appendChild(footerBox)
+
+                let label = document.createElement('h1')
+                label.textContent = section.comments.label
+                footerBox.appendChild(label)
+
+                let value = document.createElement('p')
+                value.textContent = section.comments.value
+                footerBox.appendChild(value)
+            }
+
+            if (section.termsAndConditions.hidden) {
+                let footerBox = document.createElement('div')
+                footerBox.className = 'footerBox'
+                footerBoxR.appendChild(footerBox)
+
+                let label = document.createElement('h1')
+                label.textContent = section.termsAndConditions.label
+                footerBox.appendChild(label)
+
+                let value = document.createElement('p')
+                value.textContent = section.termsAndConditions.value
+                footerBox.appendChild(value)
+            }
+
+            document.querySelector('.footer').appendChild(footerBoxL);
+            document.querySelector('.footer').appendChild(footerBoxR);
+        });
+    }
+
+
+    let data = {
+        sections: [
+            {
+                color: 'rgba(0, 0, 0, 0.08)',
+                colorLine: 'rgb(0,0,0)',
+                logo: {
+                    "hidden": true,
+                    "value": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADkAAAA5CAYAAACMGIOFAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAmKSURBVHgB5VtnaFRLFD6Jsbeo2FsUFbuJihqxIxYsBLtiC6ig/pDYFVFE8Yc/VBSxgNiwIKIRK4oFERVbothr7F1j784732HnMtvnJrvhvbwPJnt3d+7MfHdmzvnOmU0MMTIyMhL+/Pmzni8TucRT/kD6r1+/0pKTk7NiPAQzqlSpEl+hQgUqUKAA/dfBfOjt27f0+PHjbCaaFMcfLK1evboQzC/ARIHP79+/458/f74+lj9LKVeuHOVHVKxYES+JIJknS1QpJSUv4eEVH0dRhi+5v3//UmxsLMXExFBeIZaiBE3u06dPtGbNGurcuTP17NmTtm3bhr2Sp7MatZkEiTdv3lCXLl3oxo0bDqmjR4/So0ePaObMma5mEysA9VHQlpt7ozKTGASbburRowddv37da8nCvC9ZsoRevHghAw8FfI/7Pn/+TCtWrKBZs2bRxo0b6ePHj853Vrhw4YKKNHgAau/evYo3vuInjpH4leXLl0u9UOAHorKyslSTJk0U72NpC6Vq1arq4sWLcn+4NsAvansSM6WCWFQstXv37lnNxLRp0+jq1avOzKGw76NevXrR69evyQa5IokO0bnv0gGJRo0aOdf6VZcGDRrQ4MGDxcqGavvmzZu0e/duv4eB969evaLNmzdbPagck9RP9fLly8RLyu/7Nm3aUEpKikMMSEhIoB07dsg9rVu3DtvHjx8/Au5b/XB5KVoZINckdQfv3r0TQ4AlU6tWLcfqwbDARRw4cIDOnj1LLBnFKYPU8ePHqV+/fvI+3ODwfbNmzejgwYPSvq9vxXt8bwW3hgcbnV2CYteg2B2IcTANBVtVtWrVKlW4cGHFg1BfvnyR+jwrismHNRS+QJvsihRbasf44FlXq1ZNPXv2zKv/QAA/VyTRIO8T6WD79u0BB7xu3ToZTJkyZdSVK1ecOm7J+QJE27VrJ23XrVtXcfQk47GxrlYktalGR7yv1MSJE2XGfL9Hx0WLFpWBjB07VurklpzZfnZ2tjp9+rTirWLlPgBXJLHUxo8fL8uQFYvf9+ywVcuWLYUg/CP8WDTg9qFZkwTB8+fPq2LFiqkRI0b47QO837Bhg+Osk5KS1M+fP9W/AdZiAFZt2bJlYtJHjx7t5d+Ux5WsXr3auYYlNcM3ZfiyYNfRREiBrgf94cMH2rVrl5Br2rSpXx02MOKzNNq3b+9l7nENtwO3kp6eTvHx8ZSWlkaVK1fOk5ArJEk9AN7s9P37d6pTpw6VLVvWrw4vZfGPGjVr1nSu9YOaP38+LViwwPkcAgLCQBkRhZ5ZqJkzZ85Q8+bNiS25fOarjjAetg+REwPnzp2T1/Lly3s1qgnAyZukCxYs6FUHD2nhwoUOCbxiRhGK+eLOnTuUmJhI/fv3l1VjbgOzzU2bNpEtQpLUTzkzM1PeBwpv8D1nxbzuwUyYWLt2bUB59uTJE7/BI87UYRi2yZw5c5z+zXonT56UkMtmX4ckqaXagwcP5JUVht9eA75+/erV2aVLl7zawZ41l2RcXBx17NiRGjdu7NUeqyPat2+f170geujQIb+xIfDWKyxXJPWgkMLAYJ4+fSrXvt/74vDhw15LU0ck0iHvLWjRrVu3ClmTZPHixcV6+7bvK8QRRGN2WRxQREgCGIzyCPMTJ074EStSpIhzjcFgD8IYQaiD1KRJk6QNXMOQIOeD/e1rTHAvrC5eA7kpAGOA8AdRLNeIkESHpkXduXOnnzXEMjMHBMydO1cGivctWrSQJYx7jx07Rh06dAgaS7IulYDYzOl0797daRsPDukTfI5tYoVwigcyauDAgU7aolSpUoojc0deQdmwy/BKbWjlM3v2bFFLWufqe7SwNouJW7duqVatWilODqspU6ZIH1pa7tmzR7H1lvZXrlwZGYGORtj8O4OHNuU40hnot2/fFDt1vxyOJgoxjzyNDrNQcC/vKcX7Uu3fv1+EPdoxIxaeJQkIcB/qo9y9e1fyO7oPzgxEJtRCh7zMnEGjlChRQnHeRQaAwZkdByKLGZk3b57ijIDcA9IIxXSiC69IViG6CNQ/iLDLkAgID1m3zb5WhYO1QL99+7YXSZSGDRvKk8YAOGcTlKRZsMzY8so9bKkVW1LFBkmxtZVlyVkGZ9Z04b2shg4dKvV8M38I2iMWT96/f9+vA7xv27atDIzVSdDUo1kwC3ggLBZkcNhrnKhSLNGcvct+UvXt21ex/nVmzswImAXjsiFpnUFXATJmcBUcVhEPyhEOoQCLiQxcp06d5NgArqB06dLi77p27UqnTp0iDrbFPQDB2sTnJUuWpBo1alhpVyuSHO2LyQ8kzSAQOKfjKmyCglq8eDENHz5cJCDyqCCulZVGsDbxef369UOmNE1YkcSBJp74+/fvA3boFoggBg0aRAMGDBA1xNaVHj58aN0eZg8PxRq26Q8YCbIwLjbFNGDYbxxfKk42K1ZOVnsbdXAMYQNXxwQ6URwKhQoVstojyiPT9Kxh6W7ZskXkns0SRCjH+SSyhu1Msk5ULO9CWs5FixZZzYRZoJZgVeEuYHVNP0hBZpHTK2FFQI5mEhHCsGHDgs4UZgVnHMnJydYGAUBgrLPjLDKsVsKQIUMifz6po4Jx48bJkgwEkLx27RpNmDDBlTGCINd9IJoJ9/sFRDO9e/eOziGs8sSF06dP94sDNTirTizm5fzDPOgJBrMO2kfohMPbUPU5i061a9cmN7AmqR3zjBkzJBunl5hJBKfKcOxw6DZAe/qMEe0ggxCuPnyrW7g61QIxCAOcGY4aNUqyZXqAKCzUxfJNnjxZ/4YmLHSeB+XIkSNB66F9ZBRA0nUaMyfH6ebZCB+tKT7PlziP8zFOCMaBbVDNaRYcOyCswn2IWwPV15EKu5noHRMEI6pffU+XcA3R3a1bNyuXwDlWaWPMmDF+9bVgmDp1qtUpVkRJhgMGxFpUsYgOOZsgwDkg8ZWcv/X6AQSucUzIKc0cEQTALwZ/kIOJBpBV51SGmHxoU523AZTHzWjXgR9KQCNzpkCS1fCZHEhTnz59nEy5673I4NM1itpMaiBO5OSzGjlypOw/U7eSZzkyOcnr+OZ+gNyeb0Z9Jk1wf/Ty5UuZKYgGJI0hLOrVqyciQ4dzkQZmMuo/INTAUqtUqRKlpqZ6LdmcLEG3yDOSGuZs5QVB6ZP+BwDJbPNsMT9B8wLJTBiE/AjP+Wd6LMulVE4kZYMozhnyA8ADx4ysi/HfBGmy8z3/NrGUL1MofwBneplMMBX/F/IPYFN1Ns8FmiEAAAAASUVORK5CYII="
+                },
+
+//              Название документа (Invoice/Estimate) и его номер
+                title: {
+                    "hidden": true,
+                    "label": "Invoice",
+                    "numberI": "#0119230"
+                },
+                // Дата инвойса
+                date: {
+                    "hidden": true,
+                    "label": "Issued on",
+                    "value": "7 Oct 2022"
+                },
+
+                dueDate: {
+                    "hidden": true,
+                    "label": "Payment due",
+                    "value": "18 Nov 2022",
+                },
+
+                // Референс
+                reference: {
+                    "hidden": true,
+                    "label": "Reference",
+                    "value": "Flippa success fee #4355"
+                },
+
+                // Блок Shipping details
+
+                fromCard: {
+                    "hidden": true,
+                    "color": 'rgba(0, 0, 0, 0.08)',
+                    "label": "From",
+                    "company": "Roga y Kopyta LLC",
+                    "name": "Alexander Johnson",
+                    "email": "hello@gmail.com",
+                    'phone': '(786) 438-4931',
+                    "street": "3849 Lincoln Rd",
+                    "city": "New York",
+                    "region": "NY",
+                    "country": "United States",
+
+                },
+
+
+                billTo: {
+                    "hidden": true,
+                    "color": 'rgba(0, 0, 0, 0.08)',
+                    "label": "Bill to",
+                    "company": "Client Company Name Inc",
+                    "name": "Albert Flores",
+                    "email": "nathan.roberts@example.com",
+                    'phone': '(786) 438-4931',
+                    "street": "123 Main street, Office 293",
+                    "city": "Miami",
+                    "region": "Florida",
+                    "country": "United States",
+
+                },
+
+                shipping: {
+                    "hidden": true,
+                    "color": 'rgba(0, 0, 0, 0.08)',
+                    "label": "Ship to",
+                    "company": "Shipping Company Name Inc",
+                    "name": "John Doe",
+                    "email": "hello@gmailc.com",
+                    'phone': '(786) 438-4931',
+                    "street": "340 SE 3rd street,office 2034",
+                    "city": "Los Angeles",
+                    "region": "CA",
+                    "country": "United States",
+
+                },
+
+                // Продукты
+                product: {
+                    // Список продуктов
+                    items: [
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": 'First part of main page design text example in two lines',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$99,000.00"
+                        },
+
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                    ],
+                    // Настройка отображение колнок таблицы продуктов и их названия
+                    "configuration": {
+                        "code": {
+                            "label": "Code",
+                            "hidden": true
+                        },
+                        "description": {
+                            "hidden": true,
+                            "label": "Description"
+                        },
+
+                        "Qty": {
+                            "hidden": true,
+                            "label": "Qty"
+                        },
+
+                        "price": {
+                            "label": "Price",
+                            "hidden": true
+                        },
+
+                        "tax": {
+                            "hidden": true,
+                            "label": "Tax"
+                        },
+
+                        "discount": {
+                            "hidden": true,
+                            "label": "Discount"
+                        },
+                        "amount": {
+                            "hidden": true,
+                            "label": "Amount"
+                        }
+                    }
+                },
+
+
+                shippingCost: {
+                    "hidden": true,
+                    "label": "Shipping cost",
+                    "value": "$10.00"
+                },
+
+                discount: {
+                    "hidden": true,
+                    "label": "Discount",
+                    "value": "$10.00"
+                },
+
+                SalesTax: {
+                    "hidden": true,
+                    "label": "Sales Tax, 7.5%",
+                    "value": "$10.00"
+                },
+
+                California: {
+                    "hidden": true,
+                    "label": "California Tax, 5%",
+                    "value": "$10.00"
+                },
+
+                totalAmount: {
+                    "hidden": true,
+                    "label": "Total",
+                    "value": "$40.00"
+                },
+
+                // Блок Payment Instructions
+                payment: {
+                    "hidden": true,
+                    "label": "Payment Instructions",
+                    "value": "Choice Financial Group Address: 4501 23rd Avenue S Fargo, ND 58104, United States SWIFT code: CHFGUS44021 Account number 202307913164 Routing Number 091311229 Transfer related commission charges should be covered by Invoiced party."
+                },
+
+                // Блок Terms and Conditions
+                "termsAndConditions": {
+                    "hidden": true,
+                    "label": "Terms and Conditions",
+                    "value": "You must include the INVOICE number in the wire transfer memo field for identification and timely credit of your account."
+                },
+                // Блок Comments
+                "comments": {
+                    "hidden": true,
+                    "label": "Notes",
+                    "value": "You must include the INVOICE number in the wire transfer memo field for identification and timely credit of your account. You must include the INVOICE number in the wire transfer memo field for identification and timely credit of your account."
+                }
+            },
+            // Другие секции...
+        ]
+    };
+
+    fillDocument(data);
+</script>
+</body>
+</html>

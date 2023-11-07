@@ -7,7 +7,7 @@
     <style>
         html, body {
             width: 595px;
-            height: 842px;
+            min-height: 100vh;
             margin: 0 auto;
             padding: 0;
             font-family: Inter, sans-serif;
@@ -143,9 +143,7 @@
 
 
         .main-Check {
-            position: absolute;
             margin: 12px 40px 0 40px;
-            right: 0;
             width: 221px;
             height: 113px;
         }
@@ -156,6 +154,12 @@
             flex-direction: column;
             gap: 6px;
             margin-bottom: 12px;
+        }
+
+        .boxTable {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
         }
 
         .list {
@@ -214,10 +218,9 @@
             display: flex;
             gap: 16px;
             text-align: center;
-            padding: 0px 40px 0px 40px;
-            position: absolute;
-            bottom: 0;
+            margin-top: 140px;
             margin-bottom: 32px;
+            padding: 0 40px 0 40px;
         }
 
     </style>
@@ -403,6 +406,12 @@
 
             document.querySelector('.main').appendChild(sectionMainTop);
 
+
+            let boxTable = document.createElement('div')
+            boxTable.className = 'boxTable'
+
+            document.querySelector('.main').appendChild(boxTable);
+
             // sectionMainList
             let sectionMainTable = document.createElement('table');
             sectionMainTable.className = 'main-table';
@@ -524,7 +533,7 @@
 
             })
 
-            document.querySelector('.main').appendChild(sectionMainTable);
+            document.querySelector('.boxTable').appendChild(sectionMainTable);
 
             // sectionMainCheck
             let sectionMainCheck = document.createElement('div');
@@ -606,7 +615,7 @@
                 total.appendChild(value)
             }
 
-            document.querySelector('.main').appendChild(sectionMainCheck);
+            document.querySelector('.boxTable').appendChild(sectionMainCheck);
 
             let footerBoxL = document.createElement('div');
             footerBoxL.className = 'footerBoxL';
@@ -781,6 +790,226 @@
                             "discount": "$1.00",
                             "amount": "$10.00"
                         },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        }, {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        }, {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+                        {
+                            "code": "B-678",
+                            "description": "Design",
+                            "descriptionInfo": '',
+                            "Qty": "1 hr",
+                            "price": "$10.00",
+                            "tax": "$10.00",
+                            "discount": "$1.00",
+                            "amount": "$10.00"
+                        },
+
+
                     ],
                     // Настройка отображение колнок таблицы продуктов и их названия
                     "configuration": {
@@ -858,13 +1087,13 @@
                 },
 
                 // Блок Terms and Conditions
-                "termsAndConditions": {
+                termsAndConditions: {
                     "hidden": true,
                     "label": "Terms and Conditions",
                     "value": "You must include the INVOICE number in the wire transfer memo field for identification and timely credit of your account."
                 },
                 // Блок Comments
-                "comments": {
+                comments: {
                     "hidden": true,
                     "label": "Notes",
                     "value": "You must include the INVOICE number in the wire transfer memo field for identification and timely credit of your account. You must include the INVOICE number in the wire transfer memo field for identification and timely credit of your account."
